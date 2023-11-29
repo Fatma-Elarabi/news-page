@@ -1,0 +1,73 @@
+<div class="slider container">
+  <div class="row">
+    <div class="col-6">
+      <div class="slide">
+        <p class="category" [ngStyle]="{ color: getCurrentColor() }">
+          {{ getCurrentCategory() }}
+        </p>
+        <h3 class="title">{{ getCurrentTitle() }}</h3>
+        <p class="brief">{{ getCurrentBrief() }}</p>
+      </div>
+      <div class="slider__actions">
+        <button class="find__btn" (click)="openUrl()">Find out more</button>
+        <button class="play__btn">
+          <i class="bi bi-caret-right-fill"></i>Play Demo
+        </button>
+      </div>
+      <div class="dotsContainer">
+        <div
+          *ngFor="let slide of slides; let slideIndex = index"
+          class="dot"
+          [ngStyle]="{ background: '#' + slide.colorCode }"
+          [class.active]="currentIndex === slideIndex"
+          (click)="goToSlide(slideIndex)"
+        ></div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="banner__img">
+        <img [src]="getCurrentSlideUrl()" />
+      </div>
+    </div>
+  </div>
+
+  <!-- <div>
+        <div (click)="goToPrevious()" class="leftArrow">❰</div>
+        <div (click)="goToNext()" class="rightArrow">❱</div>
+      </div> -->
+  <!-- <div class="d-flex">
+    <div>
+      <div class="slide">
+        <p class="category" [ngStyle]="{ color: getCurrentColor() }">
+          {{ getCurrentCategory() }}
+        </p>
+        <h3 class="title">{{ getCurrentTitle() }}</h3>
+        <p class="brief">{{ getCurrentBrief() }}</p>
+      </div>
+      <div class="slider__actions">
+        <button class="find__btn" (click)="openUrl()">Find out more</button>
+        <button class="play__btn">
+          <i class="bi bi-caret-right-fill"></i>Play Demo
+        </button>
+      </div>
+      <div class="dotsContainer">
+        <div
+          *ngFor="let slide of slides; let slideIndex = index"
+          class="dot"
+          [ngStyle]="{ color: '#' + slide.colorCode }"
+          [class.active]="currentIndex === slideIndex"
+          (click)="goToSlide(slideIndex)"
+        >
+          ●
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="banner__img">
+      <img [src]="getCurrentSlideUrl()" />
+    </div>
+    </div> -->
+</div>

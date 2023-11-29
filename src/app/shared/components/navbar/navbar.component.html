@@ -1,0 +1,31 @@
+<nav class="nav container">
+  <input type="checkbox" id="nav-check" />
+  <div class="nav-header">
+    <div class="nav-title">
+      <img [src]="'/assets/img/logo.png'" />
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <ul class="nav-list flex-1">
+    <li><a [routerLink]="['/']">Home</a></li>
+    <li><a [routerLink]="['/about-us']">About us</a></li>
+    <li><a [routerLink]="['/news']">News</a></li>
+    <li class="flex-1"><a [routerLink]="['/contact-us']">Contact us</a></li>
+
+    <li><a [routerLink]="['/login']">Login</a></li>
+    <li class="signup__btn"><a [routerLink]="['/sign-up']">Sign up</a></li>
+    <li>
+      <select class="select__lang">
+        <option selected>EN</option>
+        <option value="1">AR</option>
+      </select>
+    </li>
+  </ul>
+</nav>

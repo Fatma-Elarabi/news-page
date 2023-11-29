@@ -1,0 +1,66 @@
+<div class="media text-center container">
+  <p>Media</p>
+  <h3>Top News</h3>
+  <div class="media__category">
+    <div
+      class="media__category--item"
+      [class.active]="selectedCategory === 0"
+      (click)="onSelectCategory(0)"
+    >
+      All news
+    </div>
+    <div
+      *ngFor="let category of newsCategory"
+      [class.active]="selectedCategory === category.id"
+      class="media__category--item"
+      (click)="onSelectCategory(category.id)"
+    >
+      {{ category.name }}
+    </div>
+  </div>
+
+  <div class="media__news">
+    <div class="row">
+      <div
+        *ngFor="let news of filteredNews"
+        class="col-lg-4 col-md-6 col-xs-12"
+      >
+        <div *ngIf="news.showOnHomepage === 'yes'" class="news__card">
+          <img
+            [src]="news.urlToImage"
+            alt="news"
+            style="width: 100%; height: 300px"
+            onerror="this.src='././../../../../assets/img/placeholder-img.jpg';"
+          />
+          <div class="news__details">
+            <a [routerLink]="['details', news.id]">{{ news.title }}</a>
+            <div>
+              <i class="bi bi-calendar-week"></i>
+              <span class="news__date">{{
+                news.publishedDate | date : "fullDate"
+              }}</span>
+              <div class="d-flex justify-content-between news__footer">
+                <span class="categiry__name">{{
+                  getNewsCategoryName(news.categoryID)
+                }}</span>
+                <div>
+                  <i class="bi bi-heart"></i>
+                  <i class="bi bi-share-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-info-alert
+    *ngIf="filteredNews.length === 0"
+    [message]="NewsNotFoundMessage"
+  ></app-info-alert>
+
+  <div>
+    <button class="orange-btn">View All News</button>
+  </div>
+</div>
